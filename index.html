@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+    <meta charset="UTF-8">
+    <title>sitemapd3</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="sitemapd3.js"></script>
+</head>
+<body>
+    <img>
+    <script type="module">
+        var chart = window.treeChart();
+        var img = document.querySelector('img');
+        // get svg data
+        var xml = new XMLSerializer().serializeToString(chart);
+        // make it base64
+        var svg64 = btoa(xml);
+        var b64Start = 'data:image/svg+xml;base64,';
+        // prepend a "header"
+        var image64 = b64Start + svg64;
+        // set it as the source of the img element
+        img.src = image64;
+    </script>
+</body>
+</html>
